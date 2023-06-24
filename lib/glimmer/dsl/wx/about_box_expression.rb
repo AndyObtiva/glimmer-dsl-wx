@@ -19,23 +19,16 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer-dsl-wx'
+require 'glimmer/dsl/static_expression'
 
-include Glimmer
-
-frame { |f|
-  title 'Hello, Button!'
-  
-  button {
-    label 'Click To Find Who Built This!'
-    
-    on_button do
-      about_box(
-        name: f.title,
-        version: Wx::WXRUBY_VERSION,
-        description: "This is the Hello, Button! sample",
-        developers: ['The Glimmer DSL for WX Development Team']
-      )
+module Glimmer
+  module DSL
+    module Wx
+      class AboutBoxExpression < StaticExpression
+        def interpret(parent, keyword, *args, &block)
+          ::Wx.about_box(*args)
+        end
+      end
     end
-  }
-}
+  end
+end

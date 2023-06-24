@@ -4,6 +4,7 @@
 
 - Nested child control support
 - Listener support
+- `about_box` keyword for displaying an about dialog box
 - samples/glimmer_new/hello_button.rb
 - samples/glimmer_new/hello_button2.rb
 - Fix again the issue with complaining about not finding `frame` `app_name` when not specified despite it being optional

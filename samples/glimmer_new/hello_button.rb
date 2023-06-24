@@ -26,7 +26,7 @@ include Glimmer
 frame(title: 'Hello, Button!') { |f|
   button(label: 'Click To Find Who Built This!') {
     on_button do
-      Wx::about_box(
+      about_box(
         name: f.title,
         version: Wx::WXRUBY_VERSION,
         description: "This is the Hello, Button! sample",
