@@ -19,41 +19,18 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/expression'
-require 'glimmer/dsl/parent_expression'
-
 module Glimmer
-  module DSL
-    module Wx
-      class ControlExpression < Expression
-        include ParentExpression
-  
-        def can_interpret?(parent, keyword, *args, &block)
-          Glimmer::Wx::ControlProxy.exists?(keyword)
-        end
-  
-        def interpret(parent, keyword, *args, &block)
-          Glimmer::Wx::ControlProxy.create(keyword, parent, args, &block)
-        end
-        
-        def around(parent, keyword, args, block, &interpret_and_add_content)
-          if keyword == 'frame'
-            ::Wx::App.run do
-              interpret_and_add_content.call
-            end
-          else
-            interpret_and_add_content.call
-          end
-        end
-        
-        def add_content(parent, keyword, *args, &block)
-          options = args.last.is_a?(Hash) ? args.last : {post_add_content: true}
+  module Wx
+    class ControlProxy
+      # Proxy for Wx frame objects
+      #
+      # Follows the Proxy Design Pattern
+      class FrameProxy < ControlProxy
+        def post_add_content
           super
-          parent&.post_add_content if options[:post_add_content]
+          show
         end
       end
     end
   end
 end
-
-require 'glimmer/wx/control_proxy'
