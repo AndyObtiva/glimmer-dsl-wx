@@ -34,7 +34,6 @@ module Glimmer
         end
   
         def interpret(parent, keyword, *args, &block)
-          pd 'interpret'
 #           Glimmer::Wx::ControlProxy.create(keyword, parent, args, &block)
           control = ::Wx.const_get(keyword.capitalize.to_sym).new(nil)
           control.show if keyword == 'frame'
@@ -43,7 +42,6 @@ module Glimmer
         
         def around(parent, keyword, args, block, &interpret_and_add_content)
           if keyword == 'frame'
-            pd 'around'
             ::Wx::App.run do
               interpret_and_add_content.call
             end
