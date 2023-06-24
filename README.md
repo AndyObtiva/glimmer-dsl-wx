@@ -68,6 +68,9 @@ DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
 
 ## Usage
 
+Follow instructions for installing [wxruby3](https://github.com/mcorino/wxRuby3) on a supported platform (Linux or Windows):
+https://github.com/mcorino/wxRuby3/blob/master/INSTALL.md
+
 Install [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx) gem directly into a [maintained Ruby version](https://www.ruby-lang.org/en/downloads/):
 
 ```
