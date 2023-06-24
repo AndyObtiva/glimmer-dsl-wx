@@ -109,6 +109,7 @@ DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
 
 - [Glimmer DSL for WX](#)
   - [Usage](#usage)
+  - [Smart Defaults and Conventions](#smart-defaults-and-conventions)
   - [Process](#process)
   - [Resources](#resources)
   - [Help](#help)
@@ -148,6 +149,11 @@ If you cloned project, test by running a sample locally:
 ```
 ruby -r ./lib/glimmer-dsl-wx.rb samples/glimmer_new/hello_world.rb
 ```
+
+## Smart Defaults and Conventions
+
+- Instantiate any wxWidgets control by using its underscored name (e.g. `Button` becomes `button`)
+- `frame` will automatically execute within a `Wx::App.run` block and `show` the Frame
 
 ## Process
 
