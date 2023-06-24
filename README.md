@@ -14,7 +14,7 @@
 - Scaffolding for new custom controls, apps, and gems
 - Native-Executable packaging on Mac, Windows, and Linux.
 
-Hello, World! Sample 1:
+**Hello, World!**
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -24,7 +24,7 @@ include Glimmer
 frame(title: 'Hello, World!')
 ```
 
-Hello, World! 2 (alternate syntax):
+Alternate Syntax:
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -33,6 +33,58 @@ include Glimmer
 
 frame {
   title 'Hello, World!'
+}
+```
+
+**Hello Button!**
+
+
+![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+
+![Hello, Button! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
+
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame(title: 'Hello, Button!') { |f|
+  button(label: 'Click To Find Who Built This!') {
+    on_button do
+      Wx::about_box(
+        name: f.title,
+        version: Wx::WXRUBY_VERSION,
+        description: "This is the Hello, Button! sample",
+        developers: ['The Glimmer DSL for WX Development Team']
+      )
+    end
+  }
+}
+```
+
+Alternate Syntax:
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame { |f|
+  title 'Hello, Button!'
+  
+  button {
+    label 'Click To Find Who Built This!'
+    
+    on_button do
+      Wx::about_box(
+        name: f.title,
+        version: Wx::WXRUBY_VERSION,
+        description: "This is the Hello, Button! sample",
+        developers: ['The Glimmer DSL for WX Development Team']
+      )
+    end
+  }
 }
 ```
 

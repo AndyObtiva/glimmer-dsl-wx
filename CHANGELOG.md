@@ -3,7 +3,9 @@
 ## 0.0.5
 
 - Nested child control support
+- Listener support
 - samples/glimmer_new/hello_button.rb
+- samples/glimmer_new/hello_button2.rb
 - Fix again the issue with complaining about not finding `frame` `app_name` when not specified despite it being optional
 
 ## 0.0.4
