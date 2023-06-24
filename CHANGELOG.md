@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.4
+
+- Fix issue with complaining about not finding `frame` `app_name` when not specified despite it being optional
+
 ## 0.0.3
 
 - Support control arguments and properties
