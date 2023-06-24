@@ -16,6 +16,8 @@
 
 **Hello, World!**
 
+![Hello, World!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
+
 ```ruby
 require 'glimmer-dsl-wx'
 
