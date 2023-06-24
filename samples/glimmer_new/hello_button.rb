@@ -19,30 +19,10 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/wx/parent'
+require 'glimmer-dsl-wx'
 
-module Glimmer
-  module Wx
-    class ControlProxy
-      # Proxy for Wx frame objects
-      #
-      # Follows the Proxy Design Pattern
-      class FrameProxy < ControlProxy
-        include Parent
-        
-        attr_accessor :app_name
-        
-        def initialize(keyword, parent, args, &block)
-          options = args.last.is_a?(Hash) ? args.last : {}
-          self.app_name = options.delete(:app_name)
-          super(keyword, parent, args, &block)
-        end
-        
-        def post_add_content
-          super
-          show
-        end
-      end
-    end
-  end
-end
+include Glimmer
+
+frame(title: 'Hello, World!') {
+  button
+}

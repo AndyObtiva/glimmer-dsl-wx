@@ -40,7 +40,8 @@ module Glimmer
           if keyword == 'frame'
             ::Wx::App.run do
               frame_proxy = interpret_and_add_content.call
-              self.app_name = frame_proxy.app_name || frame_proxy.title
+              app_name = frame_proxy.app_name || frame_proxy.title
+              self.app_name = app_name unless app_name.nil?
             end
           else
             interpret_and_add_content.call

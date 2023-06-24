@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 module Glimmer
-  module LibUI
+  module Wx
     # Parent controls and shapes who have children and add child post_initialize_child
     module Parent
       # Subclasses can override and must call super (passing add_child: false to cancel adding child to children)

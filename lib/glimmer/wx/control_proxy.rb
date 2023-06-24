@@ -20,6 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'glimmer/wx/data_bindable'
+require 'glimmer/wx/parent'
 
 module Glimmer
   module Wx
@@ -41,8 +42,8 @@ module Glimmer
           descendant_keyword_constant_map[keyword] || ControlProxy
         end
         
-        def new_control(keyword, args)
-          ::Wx.const_get(wx_constant_symbol(keyword)).new(nil, *args)
+        def new_control(keyword, parent, args)
+          ::Wx.const_get(wx_constant_symbol(keyword)).new(parent, *args)
         end
         
         def wx_constant_symbol(keyword)
@@ -217,7 +218,14 @@ module Glimmer
       private
       
       def build_control
-        @wx = ControlProxy.new_control(@keyword, @args)
+        if is_a?(Parent)
+          @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
+        else
+          sizer = HBoxSizer.new
+          @parent_proxy.sizer = sizer
+          @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
+          sizer.add @wx, 0, ::Wx::RIGHT, 8
+        end
       end
     end
   end
