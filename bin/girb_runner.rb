@@ -1,4 +1,4 @@
-# Copyright (c) 2021-2023 Andy Maleh
+# Copyright (c) 2023 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -23,7 +23,7 @@
 require 'fileutils'
 require 'etc'
 
-require_relative '../lib/glimmer-dsl-libui'
+require_relative '../lib/glimmer-dsl-wx'
 
 include Glimmer
 

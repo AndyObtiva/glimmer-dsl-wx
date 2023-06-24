@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.3
+
+- Support control arguments and properties
+- girb (Glimmer IRB)
+- Use frame title property/argument in samples/minimal/nothing.rb & samples/minimal/nothing2.rb
+
 ## 0.0.2
 
 - Remove forgotten occurrences of pd (puts_debuggerer) from code

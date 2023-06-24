@@ -14,14 +14,26 @@
 - Scaffolding for new custom controls, apps, and gems
 - Native-Executable packaging on Mac, Windows, and Linux.
 
-Nothing Sample:
+Nothing Sample 1:
 
 ```ruby
 require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame
+frame(title: 'Empty wxRuby App')
+```
+
+Nothing Sample 2 (alternative syntax):
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame {
+  title 'Empty wxRuby App'
+}
 ```
 
 **[Glimmer](https://rubygems.org/gems/glimmer) DSL Comparison Table:**

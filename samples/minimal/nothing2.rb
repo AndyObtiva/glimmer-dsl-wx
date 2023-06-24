@@ -19,33 +19,10 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/engine'
-Dir[File.expand_path('*_expression.rb', __dir__)].each {|f| require f}
+require 'glimmer-dsl-wx'
 
-# Glimmer DSL expression configuration module
-#
-# When DSL engine interprets an expression, it attempts to handle
-# with expressions listed here in the order specified.
+include Glimmer
 
-# Every expression has a corresponding Expression subclass
-# in glimmer/dsl
-
-module Glimmer
-  module DSL
-    module Wx
-      Engine.add_dynamic_expressions(
-        Wx,
-#           listener
-#           data_binding
-#           shine_data_binding
-#           property
-#           operation
-#           control
-        %w[
-          property
-          control
-        ]
-      )
-    end
-  end
-end
+frame {
+  title 'Empty wxRuby App'
+}
