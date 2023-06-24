@@ -14,17 +14,17 @@
 - Scaffolding for new custom controls, apps, and gems
 - Native-Executable packaging on Mac, Windows, and Linux.
 
-Nothing Sample 1:
+Hello, World! Sample 1:
 
 ```ruby
 require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame(title: 'Empty wxRuby App')
+frame(title: 'Hello, World!')
 ```
 
-Nothing Sample 2 (alternative syntax):
+Hello, World! 2 (alternate syntax):
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -32,7 +32,7 @@ require 'glimmer-dsl-wx'
 include Glimmer
 
 frame {
-  title 'Empty wxRuby App'
+  title 'Hello, World!'
 }
 ```
 

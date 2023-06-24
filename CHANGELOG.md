@@ -4,7 +4,9 @@
 
 - Support control arguments and properties
 - girb (Glimmer IRB)
-- Use frame title property/argument in samples/minimal/nothing.rb & samples/minimal/nothing2.rb
+- Use frame title argument in samples/minimal/nothing.rb
+- samples/glimmer_new/hello_world.rb
+- samples/glimmer_new/hello_world2.rb
 
 ## 0.0.2
 
