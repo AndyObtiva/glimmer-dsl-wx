@@ -28,6 +28,12 @@ module Glimmer
       class FrameProxy < ControlProxy
         attr_accessor :app_name
         
+        def initialize(keyword, parent, args, &block)
+          options = args.last if args.last.is_a?(Hash)
+          self.app_name = options.delete(:app_name)
+          super(keyword, parent, args, &block)
+        end
+        
         def post_add_content
           super
           show
