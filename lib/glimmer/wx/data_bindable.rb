@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 module Glimmer
-  module LibUI
+  module Wx
     # Parent controls and shapes who have children and add child post_initialize_child
     module DataBindable
       # Sets up read/write (bidirectional) data-binding

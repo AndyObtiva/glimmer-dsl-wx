@@ -29,13 +29,11 @@ module Glimmer
         include ParentExpression
   
         def can_interpret?(parent, keyword, *args, &block)
-#           Glimmer::Wx::ControlProxy.exists?(keyword)
-          ::Wx.constants.include?(keyword.capitalize.to_sym)
+          Glimmer::Wx::ControlProxy.exists?(keyword)
         end
   
         def interpret(parent, keyword, *args, &block)
-#           Glimmer::Wx::ControlProxy.create(keyword, parent, args, &block)
-          control = ::Wx.const_get(keyword.capitalize.to_sym).new(nil)
+          control = Glimmer::Wx::ControlProxy.create(keyword, parent, args, &block)
           control.show if keyword == 'frame'
           control
         end
@@ -50,14 +48,14 @@ module Glimmer
           end
         end
         
-#         def add_content(parent, keyword, *args, &block)
-#           options = args.last.is_a?(Hash) ? args.last : {post_add_content: true}
-#           super
-#           parent&.post_add_content if options[:post_add_content]
-#         end
+        def add_content(parent, keyword, *args, &block)
+          options = args.last.is_a?(Hash) ? args.last : {post_add_content: true}
+          super
+          parent&.post_add_content if options[:post_add_content]
+        end
       end
     end
   end
 end
 
-# require 'glimmer/wx/control_proxy'
+require 'glimmer/wx/control_proxy'
