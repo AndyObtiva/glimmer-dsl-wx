@@ -20,8 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'glimmer/dsl/engine'
-# Dir[File.expand_path('*_expression.rb', __dir__)].each {|f| require f}
-require 'glimmer/dsl/wx/control_expression'
+Dir[File.expand_path('*_expression.rb', __dir__)].each {|f| require f}
 
 # Glimmer DSL expression configuration module
 #
@@ -41,7 +40,9 @@ module Glimmer
 #           shine_data_binding
 #           property
 #           operation
+#           control
         %w[
+          property
           control
         ]
       )

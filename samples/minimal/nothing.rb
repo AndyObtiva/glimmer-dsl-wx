@@ -21,4 +21,6 @@ require './lib/glimmer-dsl-wx'
 
 include Glimmer
 
-frame
+frame {
+  title "Empty wxRuby App"
+}
