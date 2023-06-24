@@ -19,23 +19,23 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# require 'glimmer/dsl/expression'
-# require 'glimmer/libui/control_proxy'
-#
-# module Glimmer
-#   module DSL
-#     module Libui
-#       class ListenerExpression < Expression
-#         def can_interpret?(parent, keyword, *args, &block)
-#           (parent.is_a?(Glimmer::LibUI::ControlProxy) or parent.is_a?(Glimmer::LibUI::Shape)) and
-#             block_given? and
-#             parent.can_handle_listener?(keyword)
-#         end
-#
-#         def interpret(parent, keyword, *args, &block)
-#           parent.handle_listener(keyword, &block)
-#         end
-#       end
-#     end
-#   end
-# end
+require 'glimmer/dsl/expression'
+require 'glimmer/wx/control_proxy'
+
+module Glimmer
+  module DSL
+    module Wx
+      class ListenerExpression < Expression
+        def can_interpret?(parent, keyword, *args, &block)
+          parent.is_a?(Glimmer::Wx::ControlProxy) and
+            block_given? and
+            parent&.can_handle_listener?(keyword)
+        end
+
+        def interpret(parent, keyword, *args, &block)
+          parent.handle_listener(keyword, &block)
+        end
+      end
+    end
+  end
+end

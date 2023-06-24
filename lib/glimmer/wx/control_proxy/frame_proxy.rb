@@ -33,9 +33,13 @@ module Glimmer
         attr_accessor :app_name
         
         def initialize(keyword, parent, args, &block)
-          options = args.last.is_a?(Hash) ? args.last : {}
           self.app_name = options.delete(:app_name)
           super(keyword, parent, args, &block)
+        end
+        
+        def title=(value)
+          # wxWidgets does not allow setting a frame title if set already
+          super if (options[:title] || options['title']).nil?
         end
         
         def post_add_content

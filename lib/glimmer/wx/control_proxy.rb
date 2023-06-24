@@ -43,6 +43,10 @@ module Glimmer
         end
         
         def new_control(keyword, parent, args)
+          args = args.clone || []
+          if args.last.is_a?(Hash)
+            args[-1] = args[-1].clone
+          end
           ::Wx.const_get(wx_constant_symbol(keyword)).new(parent, *args)
         end
         
@@ -95,6 +99,10 @@ module Glimmer
         post_add_content if @block.nil?
       end
       
+      def options
+        @args&.last&.is_a?(Hash) ? @args.last : {}
+      end
+      
       # Subclasses may override to perform post add_content work (normally must call super)
       def post_add_content
         unless @content_added
@@ -117,30 +125,14 @@ module Glimmer
       end
 
       def can_handle_listener?(listener_name)
-        # TODO
-#         ::LibUI.respond_to?("#{libui_api_keyword}_#{listener_name}") ||
-#           ::LibUI.respond_to?("control_#{listener_name}") ||
+        listener_name.to_s.start_with?('on_')
+        # TODO figure out if there is a way to check this in Wx or not.
 #           has_custom_listener?(listener_name)
       end
       
       def handle_listener(listener_name, &listener)
-        # TODO
-        ### replace first listener argument (control libui pointer) with actual Ruby libui object
-#         safe_listener = Proc.new { |*args| listener.call(self, *args[1..-1]) }
-#         if ::LibUI.respond_to?("#{libui_api_keyword}_#{listener_name}")
-#           if listeners[listener_name].nil?
-#             ::LibUI.send("#{libui_api_keyword}_#{listener_name}", libui) do |*args|
-#               listeners_for(listener_name).map { |listener| listener.call(*args) }.last
-#             end
-#           end
-#           listeners_for(listener_name) << safe_listener
-#         elsif ::LibUI.respond_to?("control_#{listener_name}")
-#           if listeners[listener_name].nil?
-#             ::LibUI.send("control_#{listener_name}", libui) do |*args|
-#               listeners_for(listener_name).map { |listener| listener.call(*args) }.last
-#             end
-#           end
-#           listeners_for(listener_name) << safe_listener
+        event = listener_name.to_s.sub('on_', '')
+        @parent_proxy.wx.send("evt_#{event}", @wx, &listener)
 #         elsif has_custom_listener?(listener_name)
 #           handle_custom_listener(listener_name, &listener)
 #         end
@@ -221,11 +213,12 @@ module Glimmer
         if is_a?(Parent)
           @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
         else
-          sizer = HBoxSizer.new
+          sizer = ::Wx::HBoxSizer.new
           @parent_proxy.sizer = sizer
           @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
           sizer.add @wx, 0, ::Wx::RIGHT, 8
         end
+        @wx
       end
     end
   end

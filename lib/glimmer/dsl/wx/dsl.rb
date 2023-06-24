@@ -42,6 +42,7 @@ module Glimmer
 #           operation
 #           control
         %w[
+          listener
           property
           control
         ]
