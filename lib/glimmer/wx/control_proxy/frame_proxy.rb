@@ -26,6 +26,8 @@ module Glimmer
       #
       # Follows the Proxy Design Pattern
       class FrameProxy < ControlProxy
+        attr_accessor :app_name
+        
         def post_add_content
           super
           show

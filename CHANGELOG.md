@@ -5,6 +5,8 @@
 - Support control arguments and properties
 - girb (Glimmer IRB)
 - Use frame title argument in samples/minimal/nothing.rb
+- Support `app_name` property on `frame`
+- Automatically set `app_name` to `frame` `title` if `frame` `app_name` is not specified
 - samples/glimmer_new/hello_world.rb
 - samples/glimmer_new/hello_world2.rb
 

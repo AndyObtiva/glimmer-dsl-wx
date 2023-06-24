@@ -39,7 +39,8 @@ module Glimmer
         def around(parent, keyword, args, block, &interpret_and_add_content)
           if keyword == 'frame'
             ::Wx::App.run do
-              interpret_and_add_content.call
+              frame_proxy = interpret_and_add_content.call
+              self.app_name = frame_proxy.app_name || frame_proxy.title
             end
           else
             interpret_and_add_content.call
