@@ -26,44 +26,99 @@ include Glimmer
 frame { |main_frame|
   title 'Hello, Sizer!'
   
-  v_box_sizer {
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 1'
+  h_box_sizer {
+    v_box_sizer {
+      sizer_args 0, Wx::RIGHT, 10
       
-      on_button do
-        message_dialog(
-          "Hello",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 1'
+        
+        on_button do
+          message_dialog(
+            "Hello",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 2'
+        
+        on_button do
+          message_dialog(
+            "Howdy",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 3'
+        
+        on_button do
+          message_dialog(
+            "Hi",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
     }
     
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 2'
+    v_box_sizer {
+      sizer_args 0, Wx::RIGHT, 10
       
-      on_button do
-        message_dialog(
-          "Howdy",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
-    }
-    
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 3'
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 4'
+        
+        on_button do
+          message_dialog(
+            "Ciao",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
       
-      on_button do
-        message_dialog(
-          "Aloha",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 5'
+        
+        on_button do
+          message_dialog(
+            "Aloha",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 6'
+        
+        on_button do
+          message_dialog(
+            "Salut",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
     }
   }
 }

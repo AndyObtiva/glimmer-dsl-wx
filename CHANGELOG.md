@@ -1,9 +1,13 @@
 # Change Log
 
+## 0.0.7
+
+- Sizer addable support (e.g. supporting `growable_col(1, 1)`, using `add_growable_col(1, 1)` method in wxruby3 API) & modify hello_sizer.rb to use a `spacer` addable
+
 ## 0.0.6
 
 - Sizer (layout) support
-- samples/glimmer_new/hello_sizer.rb
+- samples/hello/hello_sizer.rb
 - Refactor/move `glimmer_new` samples to `hello` directory
 - Fix `ControlProxy#frame_proxy` method, which grabs the parent frame (going all the way to the top of the hierarchy)
 

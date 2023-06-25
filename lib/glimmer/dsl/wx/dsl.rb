@@ -44,6 +44,7 @@ module Glimmer
         %w[
           listener
           sizer_args
+          sizer_addable
           sizer
           property
           control

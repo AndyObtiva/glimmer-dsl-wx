@@ -19,28 +19,24 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/static_expression'
+require 'glimmer/dsl/expression'
 require 'glimmer/wx/control_proxy'
 require 'glimmer/wx/sizer_proxy'
 
 module Glimmer
   module DSL
     module Wx
-      class SizerArgsExpression < StaticExpression
+      class SizerAddableExpression < Expression
         def can_interpret?(parent, keyword, *args, &block)
-          keyword == 'sizer_args' and
-            (
-              parent.is_a?(Glimmer::Wx::ControlProxy) or
-              parent.is_a?(Glimmer::Wx::SizerProxy)
-            ) and
-            parent&.parent_proxy&.is_a?(Glimmer::Wx::SizerProxy)
+          parent.is_a?(Glimmer::Wx::SizerProxy) and
+            block.nil? and
+            parent.can_add_sizer_addable?(keyword)
         end
-        
+
         def interpret(parent, keyword, *args, &block)
-          parent.parent_proxy.add(parent, *args, &block)
+          parent.add_sizer_addable(keyword, *args)
         end
       end
-      SizerArgumentsExpression = SizerArgsExpression
     end
   end
 end

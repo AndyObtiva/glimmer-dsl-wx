@@ -61,6 +61,10 @@ module Glimmer
           "#{keyword.to_s.camelcase(:upper)}Proxy".to_sym
         end
         
+        def sizer_addable_method(keyword)
+          "add_#{keyword}"
+        end
+        
         def keyword(constant_symbol)
           constant_symbol.to_s.underscore.sub(/_proxy$/, '')
         end
@@ -134,6 +138,18 @@ module Glimmer
       
       def add(control_proxy, *args, &block)
         @wx.add(control_proxy.wx, *args)
+      end
+      
+      # Checks if it can add a sizer addable (visual things other than controls)
+      # Example: for keyword `growable_col`, sizer addable method is `add_growable_col`
+      def can_add_sizer_addable?(keyword)
+        @wx.respond_to?(SizerProxy.sizer_addable_method(keyword))
+      end
+      
+      # Adds a sizer addable (visual things other than controls)
+      # Example: for keyword `growable_col`, sizer addable method is `add_growable_col`
+      def add_sizer_addable(keyword, *args)
+        @wx.send(SizerProxy.sizer_addable_method(keyword), *args)
       end
       
       private
