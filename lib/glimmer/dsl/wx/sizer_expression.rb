@@ -19,26 +19,35 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer-dsl-wx'
+require 'glimmer/dsl/expression'
+require 'glimmer/wx/control_proxy'
+require 'glimmer/wx/sizer_proxy'
 
-include Glimmer
-
-frame { |f|
-  title 'Hello, Button!'
+module Glimmer
+  module DSL
+    module Wx
+      class SizerExpression < Expression
+        include ParentExpression
   
-  h_box_sizer {
-    button {
-      sizer_args 0, Wx::RIGHT, 10
-      label 'Click To Find Who Built This!'
-      
-      on_button do
-        about_box(
-          name: f.title,
-          version: Wx::WXRUBY_VERSION,
-          description: "This is the Hello, Button! sample",
-          developers: ['The Glimmer DSL for WX Development Team']
-        )
+        def can_interpret?(parent, keyword, *args, &block)
+          (
+            parent.is_a?(Glimmer::Wx::ControlProxy) or
+            parent.is_a?(Glimmer::Wx::SizerProxy)
+          ) and
+            Glimmer::Wx::SizerProxy.exists?(keyword)
+        end
+
+        def interpret(parent, keyword, *args, &block)
+          Glimmer::Wx::SizerProxy.create(keyword, parent, args, &block)
+        end
+        
+        def add_content(parent, keyword, *args, &block)
+          options = args.last.is_a?(Hash) ? args.last : {post_add_content: true}
+          options[:post_add_content] = true if options[:post_add_content].nil?
+          super
+          parent&.post_add_content if options[:post_add_content]
+        end
       end
-    }
-  }
-}
+    end
+  end
+end

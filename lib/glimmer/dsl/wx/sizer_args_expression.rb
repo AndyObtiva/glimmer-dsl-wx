@@ -19,26 +19,25 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer-dsl-wx'
+require 'glimmer/dsl/static_expression'
+require 'glimmer/wx/control_proxy'
+require 'glimmer/wx/sizer_proxy'
 
-include Glimmer
-
-frame { |f|
-  title 'Hello, Button!'
-  
-  h_box_sizer {
-    button {
-      sizer_args 0, Wx::RIGHT, 10
-      label 'Click To Find Who Built This!'
-      
-      on_button do
-        about_box(
-          name: f.title,
-          version: Wx::WXRUBY_VERSION,
-          description: "This is the Hello, Button! sample",
-          developers: ['The Glimmer DSL for WX Development Team']
-        )
+module Glimmer
+  module DSL
+    module Wx
+      class SizerArgsExpression < StaticExpression
+        def can_interpret?(parent, keyword, *args, &block)
+          keyword == 'sizer_args' and
+            parent.is_a?(Glimmer::Wx::ControlProxy) and
+            parent&.parent_proxy&.is_a?(Glimmer::Wx::SizerProxy)
+        end
+        
+        def interpret(parent, keyword, *args, &block)
+          parent.parent_proxy.add(parent, *args, &block)
+        end
       end
-    }
-  }
-}
+      SizerArgumentsExpression = SizerArgsExpression
+    end
+  end
+end

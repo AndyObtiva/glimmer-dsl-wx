@@ -23,21 +23,46 @@ require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame { |f|
-  title 'Hello, Button!'
+frame { |main_frame|
+  title 'Hello, Sizer!'
   
-  h_box_sizer {
+  v_box_sizer {
     button {
-      sizer_args 0, Wx::RIGHT, 10
-      label 'Click To Find Who Built This!'
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 1'
       
       on_button do
-        about_box(
-          name: f.title,
-          version: Wx::WXRUBY_VERSION,
-          description: "This is the Hello, Button! sample",
-          developers: ['The Glimmer DSL for WX Development Team']
-        )
+        message_dialog(
+          "Hello",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
+    
+    button {
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 2'
+      
+      on_button do
+        message_dialog(
+          "Howdy",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
+    
+    button {
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 3'
+      
+      on_button do
+        message_dialog(
+          "Aloha",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
       end
     }
   }

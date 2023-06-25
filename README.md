@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for WX 0.0.5
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for WX 0.0.6
 ## wxWidgets Ruby Desktop Development GUI Library
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-wx.svg)](http://badge.fury.io/rb/glimmer-dsl-wx)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -136,7 +136,7 @@ gem install glimmer-dsl-wx
 Or install via Bundler `Gemfile`:
 
 ```ruby
-gem 'glimmer-dsl-wx', '~> 0.0.5'
+gem 'glimmer-dsl-wx', '~> 0.0.6'
 ```
 
 Test that installation worked by running a sample:

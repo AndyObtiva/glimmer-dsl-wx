@@ -116,9 +116,19 @@ module Glimmer
         # No Op by default
       end
       
+      # Returns closest frame ancestor or self if it is a frame
       def frame_proxy
         found_proxy = self
-        until found_proxy.nil? || found_proxy.is_a?(WindowProxy)
+        until found_proxy.nil? || found_proxy.is_a?(FrameProxy)
+          found_proxy = found_proxy.parent_proxy
+        end
+        found_proxy
+      end
+      
+      # Returns closest control ancestor
+      def control_proxy
+        found_proxy = parent_proxy
+        until found_proxy.nil? || found_proxy.is_a?(ControlProxy)
           found_proxy = found_proxy.parent_proxy
         end
         found_proxy
@@ -132,7 +142,7 @@ module Glimmer
       
       def handle_listener(listener_name, &listener)
         event = listener_name.to_s.sub('on_', '')
-        @parent_proxy.wx.send("evt_#{event}", @wx, &listener)
+        frame_proxy.wx.send("evt_#{event}", @wx, &listener)
 #         elsif has_custom_listener?(listener_name)
 #           handle_custom_listener(listener_name, &listener)
 #         end
@@ -210,15 +220,8 @@ module Glimmer
       private
       
       def build_control
-        if is_a?(Parent)
-          @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
-        else
-          sizer = ::Wx::HBoxSizer.new
-          @parent_proxy.sizer = sizer
-          @wx = ControlProxy.new_control(@keyword, @parent_proxy&.wx, @args)
-          sizer.add @wx, 0, ::Wx::RIGHT, 8
-        end
-        @wx
+        # must pass control_proxy.wx as parent because the direct parent might be a sizer
+        @wx = ControlProxy.new_control(@keyword, control_proxy&.wx, @args)
       end
     end
   end

@@ -23,15 +23,19 @@ require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame(title: 'Hello, Button!') { |f|
-  button(label: 'Click To Find Who Built This!') {
-    on_button do
-      about_box(
-        name: f.title,
-        version: Wx::WXRUBY_VERSION,
-        description: "This is the Hello, Button! sample",
-        developers: ['The Glimmer DSL for WX Development Team']
-      )
-    end
+frame(title: 'Hello, Button!') { |main_frame|
+  h_box_sizer {
+    button(label: 'Click To Find Who Built This!') {
+      sizer_args 0, Wx::RIGHT, 10
+      
+      on_button do
+        about_box(
+          name: main_frame.title,
+          version: Wx::WXRUBY_VERSION,
+          description: "This is the Hello, Button! sample",
+          developers: ['The Glimmer DSL for WX Development Team']
+        )
+      end
+    }
   }
 }

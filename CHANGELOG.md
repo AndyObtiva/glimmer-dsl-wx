@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.6
+
+- Sizer (layout) support
+- samples/glimmer_new/hello_sizer.rb
+- Fix `ControlProxy#frame_proxy` method, which grabs the parent frame (going all the way to the top of the hierarchy)
+
 ## 0.0.5
 
 - Nested child control support

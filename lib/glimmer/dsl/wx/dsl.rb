@@ -43,6 +43,8 @@ module Glimmer
 #           control
         %w[
           listener
+          sizer_args
+          sizer
           property
           control
         ]
