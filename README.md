@@ -109,6 +109,7 @@ DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
 
 - [Glimmer DSL for WX](#)
   - [Usage](#usage)
+  - [GIRB (Glimmer IRB)](#girb-glimmer-irb)
   - [Smart Defaults and Conventions](#smart-defaults-and-conventions)
   - [Process](#process)
   - [Resources](#resources)
@@ -149,6 +150,16 @@ If you cloned project, test by running a sample locally:
 ```
 ruby -r ./lib/glimmer-dsl-wx.rb samples/glimmer_new/hello_world.rb
 ```
+
+## GIRB (Glimmer IRB)
+
+You can run the `girb` command (`bin/girb` if you cloned the project locally) to do some quick and dirty experimentation and learning:
+
+```
+girb
+```
+
+This gives you `irb` with the `glimmer-dsl-wx` gem loaded and the `Glimmer` module mixed into the main object for easy experimentation with GUI.
 
 ## Smart Defaults and Conventions
 
