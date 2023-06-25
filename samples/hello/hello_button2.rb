@@ -23,7 +23,7 @@ require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame { |f|
+frame { |main_frame|
   title 'Hello, Button!'
   
   h_box_sizer {
@@ -33,7 +33,7 @@ frame { |f|
       
       on_button do
         about_box(
-          name: f.title,
+          name: main_frame.title,
           version: Wx::WXRUBY_VERSION,
           description: "This is the Hello, Button! sample",
           developers: ['The Glimmer DSL for WX Development Team']

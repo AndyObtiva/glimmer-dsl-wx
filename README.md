@@ -51,16 +51,20 @@ require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame(title: 'Hello, Button!') { |f|
-  button(label: 'Click To Find Who Built This!') {
-    on_button do
-      about_box(
-        name: f.title,
-        version: Wx::WXRUBY_VERSION,
-        description: "This is the Hello, Button! sample",
-        developers: ['The Glimmer DSL for WX Development Team']
-      )
-    end
+frame(title: 'Hello, Button!') { |main_frame|
+  h_box_sizer {
+    button(label: 'Click To Find Who Built This!') {
+      sizer_args 0, Wx::RIGHT, 10
+      
+      on_button do
+        about_box(
+          name: main_frame.title,
+          version: Wx::WXRUBY_VERSION,
+          description: "This is the Hello, Button! sample",
+          developers: ['The Glimmer DSL for WX Development Team']
+        )
+      end
+    }
   }
 }
 ```
@@ -72,20 +76,76 @@ require 'glimmer-dsl-wx'
 
 include Glimmer
 
-frame { |f|
+frame { |main_frame|
   title 'Hello, Button!'
   
-  button {
-    label 'Click To Find Who Built This!'
+  h_box_sizer {
+    button {
+      sizer_args 0, Wx::RIGHT, 10
+      label 'Click To Find Who Built This!'
+      
+      on_button do
+        about_box(
+          name: main_frame.title,
+          version: Wx::WXRUBY_VERSION,
+          description: "This is the Hello, Button! sample",
+          developers: ['The Glimmer DSL for WX Development Team']
+        )
+      end
+    }
+  }
+}
+```
+
+**Hello Sizer!**
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame { |main_frame|
+  title 'Hello, Sizer!'
+  
+  v_box_sizer {
+    button {
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 1'
+      
+      on_button do
+        message_dialog(
+          "Hello",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
     
-    on_button do
-      about_box(
-        name: f.title,
-        version: Wx::WXRUBY_VERSION,
-        description: "This is the Hello, Button! sample",
-        developers: ['The Glimmer DSL for WX Development Team']
-      )
-    end
+    button {
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 2'
+      
+      on_button do
+        message_dialog(
+          "Howdy",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
+    
+    button {
+      sizer_args 0, Wx::DOWN, 10
+      label 'Greeting 3'
+      
+      on_button do
+        message_dialog(
+          "Aloha",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
   }
 }
 ```
@@ -142,13 +202,13 @@ gem 'glimmer-dsl-wx', '~> 0.0.6'
 Test that installation worked by running a sample:
 
 ```
-ruby -r glimmer-dsl-wx -e "require 'samples/glimmer_new/hello_world'"
+ruby -r glimmer-dsl-wx -e "require 'samples/hello/hello_world'"
 ```
 
 If you cloned project, test by running a sample locally:
 
 ```
-ruby -r ./lib/glimmer-dsl-wx.rb samples/glimmer_new/hello_world.rb
+ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
 ```
 
 ## GIRB (Glimmer IRB)
