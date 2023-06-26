@@ -2,7 +2,9 @@
 
 ## 0.0.7
 
-- Sizer addable support (e.g. supporting `growable_col(1, 1)`, using `add_growable_col(1, 1)` method in wxruby3 API) & modify hello_sizer.rb to use a `spacer` addable
+- Sizer addable support (e.g. supporting `growable_col(1, 1)`, using `add_growable_col(1, 1)` method in wxruby3 API)
+- Ability to nest sizers within sizers
+- Update samples/hello/hello_sizer.rb to use a `spacer` addable and nest `v_box_sizer` under `h_box_sizer`
 
 ## 0.0.6
 

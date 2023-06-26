@@ -1,6 +1,6 @@
 # [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for WX 0.0.7
 ## wxWidgets Ruby Desktop Development GUI Library
-[![Gem Version](https://badge.fury.io/rb/glimmer-dsl-wx.svg)](http://badge.fury.io/rb/glimmer-dsl-wx)
+[![Gem Version](https://badge.fury.io/rb/glimmer-dsl-wx.svg)](https://badge.fury.io/rb/glimmer-dsl-wx)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for [WX](https://www.wxwidgets.org/) is an [MRI Ruby](https://www.ruby-lang.org) desktop development GUI (Graphical User Interface) library for the cross-platform native widget [wxWidgets](https://www.wxwidgets.org/) GUI toolkit. It provides a Glimmer GUI DSL on top of the [wxruby3](https://github.com/mcorino/wxRuby3) binding.
@@ -15,6 +15,132 @@
 - Native-Executable packaging on Mac, Windows, and Linux.
 
 **Hello, World!**
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame(title: 'Hello, World!')
+```
+
+![Hello, World!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
+
+**Hello Button!**
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame { |main_frame|
+  title 'Hello, Button!'
+  
+  h_box_sizer {
+    button {
+      sizer_args 0, Wx::RIGHT, 10
+      label 'Click To Find Who Built This!'
+      
+      on_button do
+        about_box(
+          name: main_frame.title,
+          version: Wx::WXRUBY_VERSION,
+          description: "This is the Hello, Button! sample",
+          developers: ['The Glimmer DSL for WX Development Team']
+        )
+      end
+    }
+  }
+}
+```
+
+![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+
+![Hello, Button! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
+
+**[Glimmer](https://rubygems.org/gems/glimmer) DSL Comparison Table:**
+DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
+----|-----------|---------|------------------|------|------|--------
+[Glimmer DSL for SWT (JRuby Desktop Development GUI Framework)](https://github.com/AndyObtiva/glimmer-dsl-swt) | Mac / Windows / Linux | Yes | Yes (Canvas Shape DSL) | Very Mature / Scaffolding / Native Executable Packaging / Custom Widgets | Slow JRuby Startup Time / Heavy Memory Footprint | Java / JRuby
+[Glimmer DSL for Opal (Pure Ruby Web GUI and Auto-Webifier of Desktop Apps)](https://github.com/AndyObtiva/glimmer-dsl-opal) | All Web Browsers | No | Yes (Canvas Shape DSL) | Simpler than All JavaScript Technologies / Auto-Webify Desktop Apps | Setup Process / Only Rails 5 Support for Now | Rails
+[Glimmer DSL for LibUI (Prerequisite-Free Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-libui) | Mac / Windows / Linux | Yes | Yes (Area API) | Fast Startup Time / Light Memory Footprint | LibUI is an Incomplete Mid-Alpha Only | None Other Than MRI Ruby
+[Glimmer DSL for Tk (Ruby Tk Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-tk) | Mac / Windows / Linux | Some Native-Themed Widgets (Not Truly Native) | Yes (Canvas) | Fast Startup Time / Light Memory Footprint | Complicated Setup / Widgets Do Not Look Truly Native, Espcially on Linux | ActiveTcl / MRI Ruby
+[Glimmer DSL for GTK (Ruby-GNOME Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-gtk) | Mac / Windows / Linux | Only on Linux | Yes (Cairo) | Complete Access to GNOME Features on Linux (Forte) | Not Native on Mac and Windows | None Other Than MRI Ruby on Linux / Brew Packages on Mac / MSYS & MING Toolchains on Windows / MRI Ruby
+[Glimmer DSL for FX (FOX Toolkit Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-fx) | Mac (requires XQuartz) / Windows / Linux | No | Yes (Canvas) | No Prerequisites on Windows (Forte Since Binaries Are Included Out of The Box) | Widgets Do Not Look Native / Mac Usage Obtrusively Starts XQuartz | None Other Than MRI Ruby on Windows / XQuarts on Mac / MRI Ruby
+[Glimmer DSL for WX (wxWidgets Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-wx) | Mac / Windows / Linux | Yes | Yes | Fast Startup Time / Light Memory Footprint | wxruby3 is still beta and does not support Mac yet | wxWidgets library, Doxygen, and other prereqs
+[Glimmer DSL for JFX (JRuby JavaFX Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-jfx) | Mac / Windows / Linux | No | Yes (javafx.scene.shape and javafx.scene.canvas) | Rich in Custom Widgets | Slow JRuby Startup Time / Heavy Memory Footprint / Widgets Do Not Look Native | Java / JRuby / JavaFX SDK
+[Glimmer DSL for Swing (JRuby Swing Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-swing) | Mac / Windows / Linux | No | Yes (Java2D) | Very Mature | Slow JRuby Startup Time / Heavy Memory Footprint / Widgets Do Not Look Native | Java / JRuby
+[Glimmer DSL for XML (& HTML)](https://github.com/AndyObtiva/glimmer-dsl-xml) | All Web Browsers | No | Yes (SVG) | Programmable / Lighter-weight Than Actual XML | XML Elements Are Sometimes Not Well-Named (Many Types of Input) | None
+[Glimmer DSL for CSS](https://github.com/AndyObtiva/glimmer-dsl-css) | All Web Browsers | No | Yes | Programmable | CSS Is Over-Engineered / Too Many Features To Learn | None
+
+## Table of Contents
+
+- [Glimmer DSL for WX](#)
+  - [Setup](#setup)
+  - [GIRB (Glimmer IRB)](#girb-glimmer-irb)
+  - [Smart Defaults and Conventions](#smart-defaults-and-conventions)
+  - [Samples](#samples)
+    - [Hello, World!](#hello-world)
+    - [Hello, Button!](#hello-button)
+    - [Hello, Sizer!](#hello-sizer)
+  - [Process](#process)
+  - [Resources](#resources)
+  - [Help](#help)
+    - [Issues](#issues)
+    - [Chat](#chat)
+  - [Planned Features and Feature Suggestions](#planned-features-and-feature-suggestions)
+  - [Change Log](#change-log)
+  - [Contributing](#contributing)
+  - [Contributors](#contributors)
+  - [License](#license)
+
+## Setup
+
+Follow instructions for installing [wxruby3](https://github.com/mcorino/wxRuby3) on a supported platform (Linux or Windows):
+https://github.com/mcorino/wxRuby3/blob/master/INSTALL.md
+
+Install [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx) gem directly into a [maintained Ruby version](https://www.ruby-lang.org/en/downloads/):
+
+```
+gem install glimmer-dsl-wx
+```
+ 
+Or install via Bundler `Gemfile`:
+
+```ruby
+gem 'glimmer-dsl-wx', '~> 0.0.7'
+```
+
+Test that installation worked by running a sample:
+
+```
+ruby -r glimmer-dsl-wx -e "require 'samples/hello/hello_world'"
+```
+
+If you cloned project, test by running a sample locally:
+
+```
+ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
+```
+
+## GIRB (Glimmer IRB)
+
+You can run the `girb` command (`bin/girb` if you cloned the project locally) to do some quick and dirty experimentation and learning:
+
+```
+girb
+```
+
+This gives you `irb` with the `glimmer-dsl-wx` gem loaded and the `Glimmer` module mixed into the main object for easy experimentation with GUI.
+
+## Smart Defaults and Conventions
+
+- Instantiate any wxWidgets control or sizer by using its underscored name (e.g. `Button` becomes `button`)
+- `frame` will automatically execute within a `Wx::App.run` block and `show` the Frame
+
+## Samples
+
+### Hello, World!
 
 ![Hello, World!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
 
@@ -38,13 +164,11 @@ frame {
 }
 ```
 
-**Hello Button!**
-
+### Hello Button!
 
 ![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
 
 ![Hello, Button! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
-
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -97,7 +221,11 @@ frame { |main_frame|
 }
 ```
 
-**Hello Sizer!**
+### Hello Sizer!
+
+![Hello, Sizer!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-sizer-button.png?raw=true)
+
+![Hello, Sizer! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-sizer-clicked.png?raw=true)
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -107,124 +235,103 @@ include Glimmer
 frame { |main_frame|
   title 'Hello, Sizer!'
   
-  v_box_sizer {
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 1'
+  h_box_sizer {
+    v_box_sizer {
+      sizer_args 0, Wx::RIGHT, 10
       
-      on_button do
-        message_dialog(
-          "Hello",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 1'
+        
+        on_button do
+          message_dialog(
+            "Hello",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 2'
+        
+        on_button do
+          message_dialog(
+            "Howdy",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 3'
+        
+        on_button do
+          message_dialog(
+            "Hi",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
     }
     
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 2'
+    v_box_sizer {
+      sizer_args 0, Wx::RIGHT, 10
       
-      on_button do
-        message_dialog(
-          "Howdy",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
-    }
-    
-    button {
-      sizer_args 0, Wx::DOWN, 10
-      label 'Greeting 3'
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 4'
+        
+        on_button do
+          message_dialog(
+            "Ciao",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
       
-      on_button do
-        message_dialog(
-          "Aloha",
-          "Greeting",
-          Wx::OK | Wx::ICON_INFORMATION
-        ).show_modal
-      end
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 5'
+        
+        on_button do
+          message_dialog(
+            "Aloha",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
+  
+      spacer(10)
+      
+      button {
+        sizer_args 0, Wx::DOWN, 10
+        label 'Greeting 6'
+        
+        on_button do
+          message_dialog(
+            "Salut",
+            "Greeting",
+            Wx::OK | Wx::ICON_INFORMATION
+          ).show_modal
+        end
+      }
     }
   }
 }
 ```
-
-**[Glimmer](https://rubygems.org/gems/glimmer) DSL Comparison Table:**
-DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
-----|-----------|---------|------------------|------|------|--------
-[Glimmer DSL for SWT (JRuby Desktop Development GUI Framework)](https://github.com/AndyObtiva/glimmer-dsl-swt) | Mac / Windows / Linux | Yes | Yes (Canvas Shape DSL) | Very Mature / Scaffolding / Native Executable Packaging / Custom Widgets | Slow JRuby Startup Time / Heavy Memory Footprint | Java / JRuby
-[Glimmer DSL for Opal (Pure Ruby Web GUI and Auto-Webifier of Desktop Apps)](https://github.com/AndyObtiva/glimmer-dsl-opal) | All Web Browsers | No | Yes (Canvas Shape DSL) | Simpler than All JavaScript Technologies / Auto-Webify Desktop Apps | Setup Process / Only Rails 5 Support for Now | Rails
-[Glimmer DSL for LibUI (Prerequisite-Free Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-libui) | Mac / Windows / Linux | Yes | Yes (Area API) | Fast Startup Time / Light Memory Footprint | LibUI is an Incomplete Mid-Alpha Only | None Other Than MRI Ruby
-[Glimmer DSL for Tk (Ruby Tk Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-tk) | Mac / Windows / Linux | Some Native-Themed Widgets (Not Truly Native) | Yes (Canvas) | Fast Startup Time / Light Memory Footprint | Complicated Setup / Widgets Do Not Look Truly Native, Espcially on Linux | ActiveTcl / MRI Ruby
-[Glimmer DSL for GTK (Ruby-GNOME Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-gtk) | Mac / Windows / Linux | Only on Linux | Yes (Cairo) | Complete Access to GNOME Features on Linux (Forte) | Not Native on Mac and Windows | None Other Than MRI Ruby on Linux / Brew Packages on Mac / MSYS & MING Toolchains on Windows / MRI Ruby
-[Glimmer DSL for FX (FOX Toolkit Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-fx) | Mac (requires XQuartz) / Windows / Linux | No | Yes (Canvas) | No Prerequisites on Windows (Forte Since Binaries Are Included Out of The Box) | Widgets Do Not Look Native / Mac Usage Obtrusively Starts XQuartz | None Other Than MRI Ruby on Windows / XQuarts on Mac / MRI Ruby
-[Glimmer DSL for WX (wxWidgets Ruby Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-wx) | Mac / Windows / Linux | Yes | Yes | Fast Startup Time / Light Memory Footprint | wxruby3 is still beta and does not support Mac yet | wxWidgets library, Doxygen, and other prereqs
-[Glimmer DSL for JFX (JRuby JavaFX Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-jfx) | Mac / Windows / Linux | No | Yes (javafx.scene.shape and javafx.scene.canvas) | Rich in Custom Widgets | Slow JRuby Startup Time / Heavy Memory Footprint / Widgets Do Not Look Native | Java / JRuby / JavaFX SDK
-[Glimmer DSL for Swing (JRuby Swing Desktop Development GUI Library)](https://github.com/AndyObtiva/glimmer-dsl-swing) | Mac / Windows / Linux | No | Yes (Java2D) | Very Mature | Slow JRuby Startup Time / Heavy Memory Footprint / Widgets Do Not Look Native | Java / JRuby
-[Glimmer DSL for XML (& HTML)](https://github.com/AndyObtiva/glimmer-dsl-xml) | All Web Browsers | No | Yes (SVG) | Programmable / Lighter-weight Than Actual XML | XML Elements Are Sometimes Not Well-Named (Many Types of Input) | None
-[Glimmer DSL for CSS](https://github.com/AndyObtiva/glimmer-dsl-css) | All Web Browsers | No | Yes | Programmable | CSS Is Over-Engineered / Too Many Features To Learn | None
-
-## Table of Contents
-
-- [Glimmer DSL for WX](#)
-  - [Usage](#usage)
-  - [GIRB (Glimmer IRB)](#girb-glimmer-irb)
-  - [Smart Defaults and Conventions](#smart-defaults-and-conventions)
-  - [Process](#process)
-  - [Resources](#resources)
-  - [Help](#help)
-    - [Issues](#issues)
-    - [Chat](#chat)
-  - [Planned Features and Feature Suggestions](#planned-features-and-feature-suggestions)
-  - [Change Log](#change-log)
-  - [Contributing](#contributing)
-  - [Contributors](#contributors)
-  - [License](#license)
-
-## Usage
-
-Follow instructions for installing [wxruby3](https://github.com/mcorino/wxRuby3) on a supported platform (Linux or Windows):
-https://github.com/mcorino/wxRuby3/blob/master/INSTALL.md
-
-Install [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx) gem directly into a [maintained Ruby version](https://www.ruby-lang.org/en/downloads/):
-
-```
-gem install glimmer-dsl-wx
-```
- 
-Or install via Bundler `Gemfile`:
-
-```ruby
-gem 'glimmer-dsl-wx', '~> 0.0.7'
-```
-
-Test that installation worked by running a sample:
-
-```
-ruby -r glimmer-dsl-wx -e "require 'samples/hello/hello_world'"
-```
-
-If you cloned project, test by running a sample locally:
-
-```
-ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
-```
-
-## GIRB (Glimmer IRB)
-
-You can run the `girb` command (`bin/girb` if you cloned the project locally) to do some quick and dirty experimentation and learning:
-
-```
-girb
-```
-
-This gives you `irb` with the `glimmer-dsl-wx` gem loaded and the `Glimmer` module mixed into the main object for easy experimentation with GUI.
-
-## Smart Defaults and Conventions
-
-- Instantiate any wxWidgets control by using its underscored name (e.g. `Button` becomes `button`)
-- `frame` will automatically execute within a `Wx::App.run` block and `show` the Frame
 
 ## Process
 
