@@ -126,8 +126,8 @@ ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
 
 ## Usage
 
-To use [glimmer-dsl-libui](https://rubygems.org/gems/glimmer-dsl-libui):
-1. Add `require 'glimmer-dsl-libui'` at the top of the Ruby file.
+To use [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx):
+1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file.
 2. Add `include Glimmer` into the top-level main object for testing or into an actual class for serious application usage.
 3. Write GUI DSL code beginning with `frame` to build a window first and then nest other controls/sizers within it.
 
