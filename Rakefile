@@ -17,7 +17,7 @@ Juwelier::Tasks.new do |gem|
   gem.homepage = "http://github.com/AndyObtiva/glimmer-dsl-wx"
   gem.license = "MIT"
   gem.summary = %Q{Glimmer DSL for WX}
-  gem.description = %Q{Glimmer DSL for WX (wxWidgets Ruby Desktop Development GUI Library). This is a Glimmer GUI DSL for the WxWidgets GUI toolkit using the wxruby3 binding.}
+  gem.description = %Q{Glimmer DSL for WX (wxWidgets Ruby Desktop Development GUI Library). This is a Glimmer GUI DSL for the WxWidgets GUI toolkit using the latest wxruby binding, wxruby3.}
   gem.email = "andy.am@gmail.com"
   gem.authors = ["Andy Maleh"]
   gem.executables = ['girb']

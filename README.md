@@ -77,6 +77,7 @@ DSL | Platforms | Native? | Vector Graphics? | Pros | Cons | Prereqs
 
 - [Glimmer DSL for WX](#)
   - [Setup](#setup)
+  - [Usage](#usage)
   - [GIRB (Glimmer IRB)](#girb-glimmer-irb)
   - [Smart Defaults and Conventions](#smart-defaults-and-conventions)
   - [Samples](#samples)
@@ -121,6 +122,127 @@ If you cloned project, test by running a sample locally:
 
 ```
 ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
+```
+
+## Usage
+
+To use [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx):
+1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file.
+2. Add `include Glimmer` into the top-level main object for testing or into an actual class for serious application usage.
+3. Write GUI DSL code beginning with `frame` to build a window first and then nest other controls/sizers within it.
+
+Example:
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame { |main_frame|
+  title 'Hello, Button!'
+  
+  h_box_sizer {
+    button {
+      sizer_args 0, Wx::RIGHT, 10
+      label 'Click To Find Who Built This!'
+      
+      on_button do
+        message_dialog(
+          "The Glimmer DSL for WX Team",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+      end
+    }
+  }
+}
+```
+
+![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+
+Glimmer DSL for WX follows these simple concepts in mapping from wxruby3 syntax to Glimmer GUI DSL syntax:
+
+**Keyword(args)**: wxruby3 controls/sizers may be declared by lower-case underscored name. For example, `Frame` becomes `frame`. `HBoxSizer` becomes `h_box_sizer`. And, they receive the same arguments as the wxruby3 class constructor. For example, `Frame.new(title: 'Hello')` becomes `frame(title: 'Hello')`.
+
+**Content Block** (Properties/Listeners/Controls): Any keyword may be optionally followed by a declarative Ruby curly-brace multi-line content block containing properties (attributes), listeners, and/or nested controls/sizers.
+
+Example:
+
+```ruby
+frame(title: 'Hello, Button') {
+  h_box_sizer {
+    button(label: 'Click To Find Who Built This!')
+  }
+}
+```
+
+Content block optionally receives one arg representing the control or sizer it represents.
+
+Example:
+
+```ruby
+frame(title: 'Hello, Button!') { |main_frame|
+  h_box_sizer {
+    button {
+      sizer_args 0, Wx::RIGHT, 10
+      label 'Click To Find Who Built This!'
+      
+      on_button do
+        about_box(
+          name: main_frame.title,
+          version: Wx::WXRUBY_VERSION,
+          description: "This is the Hello, Button! sample",
+          developers: ['The Glimmer DSL for WX Development Team']
+        )
+      end
+    }
+  }
+}
+```
+
+**Property**: Control properties may be declared inside keyword blocks with lower-case underscored name followed by property value args (e.g. `title "Hello"` inside `frame`). Behind the scenes, properties correspond to `control.property=` methods like `frame.title=`.
+
+Controls and sizers (objects that organize controls within certain layouts) could accept a special `sizer_args` property, which takes the arguments normally passed to the `sizer.add` method. For example, `sizer_args 0, Wx::RIGHT, 10` translates to `sizer.add(control, 0, Wx::Right, 10)` behind the scenes.
+
+**Listener**: Control listeners may be declared inside keyword blocks with listener lower-case underscored name beginning with `on_` followed by event name (translates to `frame.evt_#{event_name}` like `frame.evt_button` for the click of a button) and receiving required block handler (always followed by a `do; end` style block to signify imperative Model logic vs declarative View control/sizer nesting).
+
+Example:
+
+```ruby
+button('click') {
+  on_clicked do
+    puts 'clicked'
+  end
+}
+```
+
+Optionally, the listener block can receive an arg representing the control.
+
+```ruby
+...
+    button {
+      sizer_args 0, Wx::RIGHT, 10
+      label 'Click To Find Who Built This!'
+      
+      on_button do
+        # Do work!
+      end
+    }
+...
+```
+
+Behind the scenes, listeners correspond to `frame.evt_#{event_name}` methods. So, for `on_button`, the event name is `button`, and that translates to `frame.evt_button(button, &listener)` behind the scenes.
+
+**Operation**: Controls have methods that invoke certain operations on them. For example, `message_dialog` has a `#show_modal` method that shows the message dialog GUI.
+
+```ruby
+...
+        message_dialog(
+          "The Glimmer DSL for WX Team",
+          "Greeting",
+          Wx::OK | Wx::ICON_INFORMATION
+        ).show_modal
+...
 ```
 
 ## GIRB (Glimmer IRB)
@@ -223,7 +345,7 @@ frame { |main_frame|
 
 ### Hello Sizer!
 
-![Hello, Sizer!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-sizer-button.png?raw=true)
+![Hello, Sizer!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-sizer.png?raw=true)
 
 ![Hello, Sizer! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-sizer-clicked.png?raw=true)
 
