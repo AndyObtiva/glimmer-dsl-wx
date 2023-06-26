@@ -37,7 +37,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Hello",
-            "Greeting",
+            "Greeting 1",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
@@ -52,7 +52,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Howdy",
-            "Greeting",
+            "Greeting 2",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
@@ -67,7 +67,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Hi",
-            "Greeting",
+            "Greeting 3",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
@@ -84,7 +84,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Ciao",
-            "Greeting",
+            "Greeting 4",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
@@ -99,7 +99,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Aloha",
-            "Greeting",
+            "Greeting 5",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
@@ -114,7 +114,7 @@ frame { |main_frame|
         on_button do
           message_dialog(
             "Salut",
-            "Greeting",
+            "Greeting 6",
             Wx::OK | Wx::ICON_INFORMATION
           ).show_modal
         end
