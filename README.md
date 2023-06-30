@@ -71,6 +71,7 @@ Learn more about the differences between various [Glimmer](https://github.com/An
     - [Hello, World!](#hello-world)
     - [Hello, Button!](#hello-button)
     - [Hello, Sizer!](#hello-sizer)
+  - [Coming From wxruby3](#coming-from-wxruby3)
   - [Process](#process)
   - [Resources](#resources)
   - [Help](#help)
@@ -114,7 +115,7 @@ ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
 ## Usage
 
 To use [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx):
-1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file.
+1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file (this will automatically `require 'wxruby3'` too)
 2. Add `include Glimmer` into the top-level main object for testing or into an actual class for serious application usage.
 3. Write GUI DSL code beginning with `frame` to build a window first and then nest other controls/sizers within it.
 
@@ -441,6 +442,51 @@ frame { |main_frame|
   }
 }
 ```
+
+## Coming From wxruby3
+
+If you would like to translate wxruby3 code into Glimmer DSL for WX code, read the [Usage](#usage) section to understand how Glimmer GUI DSL syntax works, and then check out the example below, which is written in both wxruby3 and Glimmer DSL for WX.
+
+Example written in wxruby3:
+
+```ruby
+require 'wx'
+
+class TheFrame < Wx::Frame
+  def initialize(title)
+    super(nil, title: title)
+    panel = Wx::Panel.new(self)
+    button = Wx::Button.new(panel, label: 'Click me')
+    button.evt_button(Wx::ID_ANY) { Wx.message_box('Hello. Thanks for clicking me!', 'Hello Button sample') }
+  end
+end
+
+Wx::App.run { TheFrame.new('Hello world!').show }
+```
+
+![Hello_Button](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button.png)
+![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png) 
+
+Example re-written in Glimmer DSL for WX:
+
+```ruby
+require 'glimmer-dsl-wx'
+
+include Glimmer
+
+frame(title: 'Hello world!') {
+  panel {
+    button(label: 'Click me') {
+      on_button do
+        Wx.message_box('Hello. Thanks for clicking me!', 'Hello Button sample')
+      end
+    }
+  }
+}
+```
+
+![Hello_Button](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button.png)
+![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png) 
 
 ## Process
 
