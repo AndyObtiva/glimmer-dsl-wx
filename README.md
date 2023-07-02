@@ -115,7 +115,7 @@ ruby -r ./lib/glimmer-dsl-wx.rb samples/hello/hello_world.rb
 ## Usage
 
 To use [glimmer-dsl-wx](https://rubygems.org/gems/glimmer-dsl-wx):
-1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file.
+1. Add `require 'glimmer-dsl-wx'` at the top of the Ruby file (this will automatically `require 'wxruby3'` too)
 2. Add `include Glimmer` into the top-level main object for testing or into an actual class for serious application usage.
 3. Write GUI DSL code beginning with `frame` to build a window first and then nest other controls/sizers within it.
 
