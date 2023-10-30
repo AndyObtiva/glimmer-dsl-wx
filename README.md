@@ -495,8 +495,8 @@ frame(title: 'Hello world!') {
 ## Resources
 
 - [Code Master Blog](https://andymaleh.blogspot.com)
-- [wxruby3 Bindings](https://github.com/mcorino/wxRuby3)
-- [wxWidgets GUI Toolkit](https://www.wxwidgets.org/)
+- [wxruby3 Bindings](https://github.com/mcorino/wxRuby3) (used by Glimmer DSL for WX)
+- [wxWidgets GUI Toolkit](https://www.wxwidgets.org/) (used by Glimmer DSL for WX)
 
 ## Help
 
