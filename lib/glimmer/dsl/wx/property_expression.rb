@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -29,11 +29,18 @@ module Glimmer
         def can_interpret?(parent, keyword, *args, &block)
           parent.is_a?(Glimmer::Wx::ControlProxy) and
             block.nil? and
-            parent.respond_to?("#{keyword}=", *args)
+            (
+              parent.respond_to?("#{keyword}=", *args) or
+              parent.respond_to?("set_#{keyword}", *args)
+            )
         end
 
         def interpret(parent, keyword, *args, &block)
-          parent.send("#{keyword}=", *args)
+          if parent.respond_to?("#{keyword}=", *args)
+            parent.send("#{keyword}=", *args)
+          else
+            parent.send("set_#{keyword}", *args)
+          end
         end
       end
     end

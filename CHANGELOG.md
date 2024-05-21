@@ -1,5 +1,18 @@
 # Change Log
 
+## 0.1.0
+
+- Upgrade to wxruby3 1.0.0
+- Upgrade to glimmer 2.7.7
+- Support control operations (methods) in the DSL
+- Improve detection of property setter methods on controls when invoking from DSL
+- Support property unidirectional data-binding for all controls
+- Support property bidirectional data-binding for text_ctrl
+- Support property bidirectional data-binding for spin_ctrl
+- Support property bidirectional data-binding for spin_ctrl_double
+- Support property bidirectional data-binding for slider
+- Hello, Data-Binding! Sample
+
 ## 0.0.7
 
 - Sizer addable support (e.g. supporting `growable_col(1, 1)`, using `add_growable_col(1, 1)` method in wxruby3 API)

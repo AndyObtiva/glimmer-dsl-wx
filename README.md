@@ -1,9 +1,11 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for WX 0.0.7
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for WX 0.1.0
 ## wxWidgets Ruby Desktop Development GUI Library
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-wx.svg)](https://badge.fury.io/rb/glimmer-dsl-wx)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for [WX](https://www.wxwidgets.org/) is an [MRI Ruby](https://www.ruby-lang.org) desktop development GUI (Graphical User Interface) library for the cross-platform native widget [wxWidgets](https://www.wxwidgets.org/) GUI toolkit. It provides a Glimmer GUI DSL on top of the [wxruby3](https://github.com/mcorino/wxRuby3) binding.
+
+![Hello, Data-Binding!](/screenshots/glimmer-dsl-wx-sample-hello-data-binding.gif?raw=true)
 
 [Glimmer DSL for WX](https://rubygems.org/gems/glimmer-dsl-wx) aims to provide a DSL similar to the [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt) to enable more productive desktop development in Ruby with:
 - [Declarative DSL syntax](#glimmer-gui-dsl-concepts) that visually maps to the GUI control hierarchy
@@ -24,7 +26,7 @@ include Glimmer
 frame(title: 'Hello, World!')
 ```
 
-![Hello, World!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
+![Hello, World!](/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
 
 **Hello Button!**
 
@@ -54,9 +56,9 @@ frame { |main_frame|
 }
 ```
 
-![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+![Hello, Button!](/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
 
-![Hello, Button! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
+![Hello, Button! Clicked](/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
 
 Learn more about the differences between various [Glimmer](https://github.com/AndyObtiva/glimmer) DSLs by looking at the **[Glimmer DSL Comparison Table](https://github.com/AndyObtiva/glimmer#glimmer-dsl-comparison-table)**.
 
@@ -71,6 +73,7 @@ Learn more about the differences between various [Glimmer](https://github.com/An
     - [Hello, World!](#hello-world)
     - [Hello, Button!](#hello-button)
     - [Hello, Sizer!](#hello-sizer)
+    - [Hello, Data-Binding!](#hello-data-binding)
   - [Coming From wxruby3](#coming-from-wxruby3)
   - [Process](#process)
   - [Resources](#resources)
@@ -97,7 +100,7 @@ gem install glimmer-dsl-wx
 Or install via Bundler `Gemfile`:
 
 ```ruby
-gem 'glimmer-dsl-wx', '~> 0.0.7'
+gem 'glimmer-dsl-wx', '~> 0.1.0'
 ```
 
 Test that installation worked by running a sample:
@@ -146,7 +149,7 @@ frame { |main_frame|
 }
 ```
 
-![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+![Hello, Button!](/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
 
 Glimmer DSL for WX follows these simple concepts in mapping from wxruby3 syntax to Glimmer GUI DSL syntax:
 
@@ -252,7 +255,7 @@ This gives you `irb` with the `glimmer-dsl-wx` gem loaded and the `Glimmer` modu
 
 ### Hello, World!
 
-![Hello, World!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
+![Hello, World!](/screenshots/glimmer-dsl-wx-sample-hello-world.png?raw=true)
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -276,9 +279,9 @@ frame {
 
 ### Hello Button!
 
-![Hello, Button!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
+![Hello, Button!](/screenshots/glimmer-dsl-wx-sample-hello-button.png?raw=true)
 
-![Hello, Button! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
+![Hello, Button! Clicked](/screenshots/glimmer-dsl-wx-sample-hello-button-clicked.png?raw=true)
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -333,9 +336,9 @@ frame { |main_frame|
 
 ### Hello Sizer!
 
-![Hello, Sizer!](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-sizer.png?raw=true)
+![Hello, Sizer!](/screenshots/glimmer-dsl-wx-sample-hello-sizer.png?raw=true)
 
-![Hello, Sizer! Clicked](https://github.com/AndyObtiva/glimmer-dsl-wx/blob/master/screenshots/glimmer-dsl-wx-sample-hello-sizer-clicked.png?raw=true)
+![Hello, Sizer! Clicked](/screenshots/glimmer-dsl-wx-sample-hello-sizer-clicked.png?raw=true)
 
 ```ruby
 require 'glimmer-dsl-wx'
@@ -443,6 +446,120 @@ frame { |main_frame|
 }
 ```
 
+### Hello Data-Binding!
+
+Glimmer DSL for WX supports data-binding via `<=` for unidirectional data-binding and `<=>` for bidirectional data-binding.
+
+![Hello, Data-Binding!](/screenshots/glimmer-dsl-wx-sample-hello-data-binding.gif?raw=true)
+
+```ruby
+require 'glimmer-dsl-wx'
+
+class Donor
+  DONATION_AMOUNT_MIN = 0
+  DONATION_AMOUNT_MAX = 100
+  DONATION_AMOUNT_DEFAULT = 50
+  
+  attr_accessor :first_name, :last_name, :donation_amount
+  
+  def initialize
+    @last_name = @first_name = ''
+    @donation_amount = DONATION_AMOUNT_DEFAULT
+  end
+  
+  def full_name
+    full_name_parts = [first_name, last_name]
+    full_name_string = full_name_parts.join(' ').strip
+    if full_name_string.empty?
+      'Anonymous'
+    else
+      full_name_string
+    end
+  end
+  
+  def summary
+    "#{full_name} donated $#{donation_amount}"
+  end
+end
+
+donor = Donor.new
+
+include Glimmer
+
+frame(title: 'Hello, Data-Binding!') { |window|
+  panel {
+    v_box_sizer {
+      h_box_sizer {
+        sizer_args 0, Wx::DOWN, 10
+        
+        static_text(label: 'First Name:') {
+          sizer_args 0, Wx::RIGHT, 10
+        }
+        text_ctrl {
+          sizer_args 0, Wx::RIGHT, 10
+          # data-bind donor.first_name to text_ctrl.value bidirectionally,
+          # ensuring changes to either attribute update the other attribute
+          value <=> [donor, :first_name]
+        }
+      }
+      
+      h_box_sizer {
+        sizer_args 0, Wx::DOWN, 10
+        
+        static_text(label: 'Last Name:') {
+          sizer_args 0, Wx::RIGHT, 10
+        }
+        text_ctrl {
+          sizer_args 0, Wx::RIGHT, 10
+          # data-bind donor.last_name to text_ctrl.value bidirectionally,
+          # ensuring changes to either attribute update the other attribute
+          value <=> [donor, :last_name]
+        }
+      }
+      
+      h_box_sizer {
+        sizer_args 0, Wx::DOWN, 10
+        
+        static_text(label: 'Donation Amount: $') {
+          sizer_args 0, Wx::RIGHT, 1
+        }
+        spin_ctrl {
+          sizer_args 0, Wx::RIGHT, 10
+          range Donor::DONATION_AMOUNT_MIN, Donor::DONATION_AMOUNT_MAX
+          # data-bind donor.donation_amount to spin_ctrl.value bidirectionally,
+          # ensuring changes to either attribute update the other attribute
+          value <=> [donor, :donation_amount]
+        }
+      }
+      
+      h_box_sizer {
+        sizer_args 0, Wx::DOWN, 10
+        
+        slider {
+          sizer_args 0, Wx::RIGHT, 10
+          range Donor::DONATION_AMOUNT_MIN, Donor::DONATION_AMOUNT_MAX
+          # data-bind donor.first_name to spinner.value bidirectionally,
+          # ensuring changes to either attribute update the other attribute
+          value <=> [donor, :donation_amount]
+        }
+      }
+      
+      h_box_sizer {
+        sizer_args 0, Wx::DOWN, 10
+        
+        static_text(label: '') {
+          sizer_args 0, Wx::RIGHT, 10
+          # data-bind donor.summary to static_text.label unidirectionally,
+          # with computed data-binding from donor summary dependencies: first_name, last_name, and donation_amount
+          # ensuring changes to donor.summary or any of its dependencies update static_text.label
+          label <= [donor, :summary, computed_by: [:first_name, :last_name, :donation_amount]]
+        }
+      }
+    }
+  }
+}
+```
+
 ## Coming From wxruby3
 
 If you would like to translate wxruby3 code into Glimmer DSL for WX code, read the [Usage](#usage) section to understand how Glimmer GUI DSL syntax works, and then check out the example below, which is written in both wxruby3 and Glimmer DSL for WX.
@@ -465,7 +582,7 @@ Wx::App.run { TheFrame.new('Hello world!').show }
 ```
 
 ![Hello_Button](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button.png)
-![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png) 
+![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png)
 
 Example re-written in Glimmer DSL for WX:
 
@@ -486,7 +603,7 @@ frame(title: 'Hello world!') {
 ```
 
 ![Hello_Button](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button.png)
-![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png) 
+![Hello_Button_Clicked](https://raw.githubusercontent.com/mcorino/wxRuby3/master/assets/hello_button_clicked.png)
 
 ## Process
 
@@ -497,6 +614,8 @@ frame(title: 'Hello world!') {
 - [Code Master Blog](https://andymaleh.blogspot.com)
 - [wxruby3 Bindings](https://github.com/mcorino/wxRuby3) (used by Glimmer DSL for WX)
 - [wxWidgets GUI Toolkit](https://www.wxwidgets.org/) (used by Glimmer DSL for WX)
+- [wxWidgets Controls](https://docs.wxwidgets.org/3.0/group__group__class__ctrl.html)
+- [wxWidgets Sizers](https://docs.wxwidgets.org/3.0/overview_sizer.html)
 
 ## Help
 
@@ -548,7 +667,7 @@ Note that the latest development sometimes takes place in the [development](http
 
 [MIT](LICENSE.txt)
 
-Copyright (c) 2023 Andy Maleh
+Copyright (c) 2023-2024 Andy Maleh
 
 --
 

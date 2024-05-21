@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -19,27 +19,27 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# require 'glimmer/dsl/expression'
-# require 'glimmer/data_binding/model_binding'
-#
-# module Glimmer
-#   module DSL
-#     module Libui
-      ### Responsible for wiring data-binding
-      ### Depends on BindExpression
-#       class DataBindingExpression < Expression
-#         def can_interpret?(parent, keyword, *args, &block)
-#           args.size == 1 and
-#             args[0].is_a?(DataBinding::ModelBinding) and
-#             parent.respond_to?(:data_bind)
-#         end
-#
-#         def interpret(parent, keyword, *args, &block)
-#           property = keyword
-#           model_binding = args[0]
-#           parent.data_bind(property, model_binding)
-#         end
-#       end
-#     end
-#   end
-# end
+require 'glimmer/dsl/expression'
+require 'glimmer/data_binding/model_binding'
+
+module Glimmer
+  module DSL
+    module Wx
+      # Responsible for wiring data-binding
+      # Depends on BindExpression
+      class DataBindingExpression < Expression
+        def can_interpret?(parent, keyword, *args, &block)
+          args.size == 1 and
+            args[0].is_a?(DataBinding::ModelBinding) and
+            parent.respond_to?(:data_bind)
+        end
+  
+        def interpret(parent, keyword, *args, &block)
+          property = keyword
+          model_binding = args[0]
+          parent.data_bind(property, model_binding)
+        end
+      end
+    end
+  end
+end

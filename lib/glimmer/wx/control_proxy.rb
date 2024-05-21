@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -214,14 +214,14 @@ module Glimmer
       end
       
       def content(&block)
-        Glimmer::DSL::Engine.add_content(self, Glimmer::DSL::Libui::ControlExpression.new, @keyword, {post_add_content: @content_added}, &block)
+        Glimmer::DSL::Engine.add_content(self, Glimmer::DSL::Wx::ControlExpression.new, @keyword, {post_add_content: @content_added}, &block)
       end
       
       private
       
       def build_control
         # must pass control_proxy.wx as parent because the direct parent might be a sizer
-        @wx = ControlProxy.new_control(@keyword, control_proxy&.wx, @args)
+        @wx = self.class.control_proxy_class(keyword).new_control(@keyword, control_proxy&.wx, @args)
       end
     end
   end

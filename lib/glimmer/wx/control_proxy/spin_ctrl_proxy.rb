@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2024 Andy Maleh
+# Copyright (c) 2021-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -19,16 +19,23 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/static_expression'
+require 'glimmer/wx/control_proxy'
 
 module Glimmer
-  module DSL
-    module Wx
-      class AboutBoxExpression < StaticExpression
-        def interpret(parent, keyword, *args, &block)
-          ::Wx.about_box(*args)
+  module Wx
+    class ControlProxy
+      # Proxy for Wx spin ctrl objects
+      #
+      # Follows the Proxy Design Pattern
+      class SpinCtrlProxy < ControlProxy
+        def data_bind_write(property, model_binding)
+          if property == 'value'
+            handle_listener('on_spinctrl') { model_binding.call(value) }
+          end
         end
       end
     end
   end
 end
+
+Dir[File.expand_path("./#{File.basename(__FILE__, '.rb')}/*.rb", __dir__)].each {|f| require f}

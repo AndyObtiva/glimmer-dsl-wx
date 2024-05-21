@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -35,18 +35,15 @@ module Glimmer
     module Wx
       Engine.add_dynamic_expressions(
         Wx,
-#           listener
-#           data_binding
-#           shine_data_binding
-#           property
-#           operation
-#           control
         %w[
           listener
+          data_binding
+          shine_data_binding
           sizer_args
           sizer_addable
           sizer
           property
+          operation
           control
         ]
       )

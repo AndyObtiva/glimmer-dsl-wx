@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -19,29 +19,25 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# require 'glimmer/dsl/expression'
-# require 'glimmer/libui/control_proxy'
-# require 'glimmer/libui/shape'
-# require 'glimmer/libui/attributed_string'
-#
-# module Glimmer
-#   module DSL
-#     module Libui
-#       class OperationExpression < Expression
-#         def can_interpret?(parent, keyword, *args, &block)
-#           (
-#             parent.is_a?(Glimmer::LibUI::ControlProxy) or
-#               parent.is_a?(Glimmer::LibUI::Shape) or
-#               parent.is_a?(Glimmer::LibUI::AttributedString)
-#           ) and
-#             block.nil? and
-#             parent.respond_to?(keyword, *args)
-#         end
-#
-#         def interpret(parent, keyword, *args, &block)
-#           parent.send(keyword, *args)
-#         end
-#       end
-#     end
-#   end
-# end
+require 'glimmer/dsl/expression'
+require 'glimmer/wx/control_proxy'
+
+module Glimmer
+  module DSL
+    module Wx
+      class OperationExpression < Expression
+        def can_interpret?(parent, keyword, *args, &block)
+          (
+            parent.is_a?(Glimmer::Wx::ControlProxy)
+          ) and
+            block.nil? and
+            parent.respond_to?(keyword, *args)
+        end
+  
+        def interpret(parent, keyword, *args, &block)
+          parent.send(keyword, *args)
+        end
+      end
+    end
+  end
+end

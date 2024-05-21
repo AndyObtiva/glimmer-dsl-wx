@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -19,18 +19,18 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# require 'glimmer/dsl/static_expression'
-# require 'glimmer/dsl/bind_expression'
-#
-# module Glimmer
-#   module DSL
-#     module Libui
-      ### Responsible for setting up the return value of the bind keyword (command symbol)
-      ### as a ModelBinding. It is then used by another command handler like
-      ### DataBindingExpression
-#       class BindExpression < StaticExpression
-#         include Glimmer::DSL::BindExpression
-#       end
-#     end
-#   end
-# end
+require 'glimmer/dsl/static_expression'
+require 'glimmer/dsl/bind_expression'
+
+module Glimmer
+  module DSL
+    module Wx
+      # Responsible for setting up the return value of the bind keyword (command symbol)
+      # as a ModelBinding. It is then used by another command handler like
+      # DataBindingExpression
+      class BindExpression < StaticExpression
+        include Glimmer::DSL::BindExpression
+      end
+    end
+  end
+end

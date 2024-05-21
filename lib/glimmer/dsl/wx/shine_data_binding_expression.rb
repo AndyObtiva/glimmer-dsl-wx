@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Andy Maleh
+# Copyright (c) 2023-2024 Andy Maleh
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -19,24 +19,25 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# require 'glimmer/dsl/expression'
-# require 'glimmer/data_binding/model_binding'
-# require 'glimmer/data_binding/shine'
-#
-# module Glimmer
-#   module DSL
-#     module Libui
-#       class ShineDataBindingExpression < Expression
-#         def can_interpret?(parent, keyword, *args, &block)
-#           args.size == 0 and
-#             block.nil? and
-#             parent.respond_to?(keyword, *args, &block)
-#         end
-#
-#         def interpret(parent, keyword, *args, &block)
-#           Glimmer::DataBinding::Shine.new(parent, keyword)
-#         end
-#       end
-#     end
-#   end
-# end
+require 'glimmer/dsl/expression'
+require 'glimmer/data_binding/model_binding'
+require 'glimmer/data_binding/shine'
+
+module Glimmer
+  module DSL
+    module Wx
+      class ShineDataBindingExpression < Expression
+        def can_interpret?(parent, keyword, *args, &block)
+          keyword != 'content' and
+            args.size == 0 and
+            block.nil? and
+            parent.respond_to?(keyword, *args, &block)
+        end
+  
+        def interpret(parent, keyword, *args, &block)
+          Glimmer::DataBinding::Shine.new(parent, keyword)
+        end
+      end
+    end
+  end
+end
