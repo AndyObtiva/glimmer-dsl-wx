@@ -12,7 +12,7 @@
 - [Convention over configuration](#smart-defaults-and-conventions) via smart defaults and automation of low-level details
 - Requiring the [least amount of syntax](#glimmer-gui-dsl-concepts) possible to build GUI
 - [Custom Control](#custom-keywords) support
-- [Bidirectional/Unidirectional Data-Binding](#data-binding) to declaratively wire and automatically synchronize GUI Views with Models
+- [Bidirectional/Unidirectional Data-Binding](#hello-data-binding) to declaratively wire and automatically synchronize GUI Views with Models
 - Scaffolding for new custom controls, apps, and gems
 - Native-Executable packaging on Mac, Windows, and Linux.
 
