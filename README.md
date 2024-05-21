@@ -5,7 +5,7 @@
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for [WX](https://www.wxwidgets.org/) is an [MRI Ruby](https://www.ruby-lang.org) desktop development GUI (Graphical User Interface) library for the cross-platform native widget [wxWidgets](https://www.wxwidgets.org/) GUI toolkit. It provides a Glimmer GUI DSL on top of the [wxruby3](https://github.com/mcorino/wxRuby3) binding.
 
-![Hello, Data-Binding!](/screenshots/glimmer-dsl-wx-sample-hello-data-binding.gif?raw=true)
+[![Hello, Data-Binding!](/screenshots/glimmer-dsl-wx-sample-hello-data-binding.gif?raw=true)](/samples/hello/hello_data_binding.rb)
 
 [Glimmer DSL for WX](https://rubygems.org/gems/glimmer-dsl-wx) aims to provide a DSL similar to the [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt) to enable more productive desktop development in Ruby with:
 - [Declarative DSL syntax](#glimmer-gui-dsl-concepts) that visually maps to the GUI control hierarchy
