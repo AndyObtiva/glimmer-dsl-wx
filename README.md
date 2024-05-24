@@ -16,6 +16,8 @@
 - Scaffolding for new custom controls, apps, and gems
 - Native-Executable packaging on Mac, Windows, and Linux.
 
+This is a new Glimmer GUI library that is not fully developed yet. If you need a further developed GUI library, consider using [Glimmer DSL for LibUI](https://github.com/AndyObtiva/glimmer-dsl-libui) (Prerequisite-Free Ruby Desktop Development Cross-Platform Native GUI Library [Fukuoka Award Winning]) and [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt) (JRuby Desktop Development Cross-Platform Native GUI Framework).
+
 **Hello, World!**
 
 ```ruby
